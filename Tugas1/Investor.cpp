@@ -10,8 +10,10 @@ Investor::Investor(){
     name = "Investor";
     age = 18;
     balance = 0;
+
     // array masih kosong
     stocks = nullptr;
+
     nStock = 0;
 }
 
@@ -30,10 +32,20 @@ Investor::Investor(string name, int age, int balance){
 } 
 
 // Copy constructor
-Investor::Investor(const Investor& other) : id(++nInvestor), name(other.name), age(other.age), balance(other.balance), stocks(new Stock[10]), nStock(other.nStock) {
+Investor::Investor(const Investor& other) {
+    this->nInvestor++;
+    this->id = this->nInvestor;
+    this->name = other.name;
+    this->age = other.age;
+    this->balance = other.balance;
+
+    this->stocks = new Stock[10];
+    this->nStock = other.nStock;
+
     for (int i = 0; i < nStock; i++) {
         stocks[i] = other.stocks[i];
     }
+
 }
 
 // Destructor
@@ -48,11 +60,14 @@ Investor& Investor::operator=(const Investor& other) {
         age = other.age;
         balance = other.balance;
         nStock = other.nStock;
+
         delete[] stocks;
+
         stocks = new Stock[10];
         for (int i = 0; i < nStock; i++) {
             stocks[i] = other.stocks[i];
         }
+
     }
     return *this;
 }
@@ -93,6 +108,15 @@ void Investor::setAge(int age) {
 
 // Additional methods
 void Investor::buyStock(Stock stock) {
+
+      /*
+            Melakukan pembelian stock. Apabila investor memiliki saldo yang cukup, 
+            maka stock akan ditambahkan ke array of stock investor dan saldo akan dikurangi sejumlah harga stock * quantity.
+            Apabila investor tidak memiliki saldo yang cukup, maka tidak ada perubahan dan tampilkan
+            pesan "Insufficient balance".
+            .
+        */
+
     if (balance >= stock.getPrice() * stock.getQuantity()) {
 
         balance -= stock.getPrice() * stock.getQuantity();
@@ -113,6 +137,15 @@ void Investor::buyStock(Stock stock) {
 }
 
 void Investor::sellStock(string code) {
+
+    /*
+            Melakukan penjualan stock. Apabila investor memiliki stock dengan code yang sama dengan stock yang akan dijual, 
+            maka stock akan dihapus dari array of stock investor dan saldo akan ditambah sejumlah harga stock * quantity.
+            Apabila investor tidak memiliki stock dengan code yang sama dengan stock yang akan dijual, maka tidak ada perubahan dan tampilkan
+            pesan "Stock not found".
+            .
+        */
+
     bool exist = false;
 
     for (int i = 0; i < nStock; i++) {
@@ -127,7 +160,6 @@ void Investor::sellStock(string code) {
             }
 
             nStock--;
-            return ;
 
         }
     }
@@ -139,6 +171,14 @@ void Investor::sellStock(string code) {
 }
 
 void Investor::topUpBalance(int amount) {
+
+ /*
+            Melakukan penambahan saldo. Apabila amount bernilai positif, maka saldo akan ditambah sejumlah amount
+            dan tampilkan pesan "successfully topped up <amount> berry".
+            Apabila amount bernilai negatif, maka tidak ada perubahan dan tampilkan pesan "Invalid amount".
+            .
+        */
+
     if (amount > 0) {
 
         balance += amount;
@@ -153,6 +193,15 @@ void Investor::topUpBalance(int amount) {
 
 
 void Investor::withdrawBalance(int amount) {
+
+    /*
+            Melakukan penarikan saldo. Apabila amount bernilai positif dan amount tidak melebihi saldo, maka saldo akan dikurangi sejumlah amount
+            dan tampilkan pesan "successfully withdraw <amount> berry".
+            Apabila amount bernilai negatif, maka tidak ada perubahan dan tampilkan pesan "Invalid amount".
+            Apabila amount melebihi saldo, maka tidak ada perubahan dan tampilkan pesan "Insufficient balance".
+            .
+        */
+
     if (amount < 0) {
         cout << "Invalid amount" << endl;
     } else if (amount > balance) {
@@ -169,8 +218,10 @@ void Investor::printInfo() {
     cout << "Age: " << age << endl;
     cout << "Balance: " << balance << endl;
     cout << "Stocks:" << endl;
+
     for (int i = 0; i < nStock; i++) {
         cout << stocks[i].getCode() << " " << stocks[i].getQuantity() << endl;
     }
+
 }
 

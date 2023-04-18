@@ -8,14 +8,14 @@ class Stock {
     private:
         // attributes
         string code;
-        int price;
+        long int price;
         int quantity;
         Company company;
 
     public:
         // ctor
         Stock(); // default ctor
-        Stock(string name, int price, Company company, int quantity);
+        Stock(string name, long int price, Company company, int quantity);
         // cctor
         Stock(const Stock& other);   
         // dtor
@@ -24,11 +24,11 @@ class Stock {
         Stock& operator=(const Stock& other);
         // getter
         string getCode();
-        int getPrice();
+        long int getPrice();
         Company getCompany();
         int getQuantity();
         // setter
-        void setPrice(int price);
+        void setPrice(long int price);
         void setCompany(Company company);
         void setQuantity(int quantity);
         // additional method

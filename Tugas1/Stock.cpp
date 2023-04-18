@@ -2,7 +2,6 @@
 
 // default constructor
 Stock::Stock(){
-    //  : code(""), price(0), quantity(0), company(Company()) {}
     code = "default";
     price = 0;
     quantity = 0;
@@ -10,9 +9,8 @@ Stock::Stock(){
 
 }
 
-// parameterized constructor
-Stock::Stock(string code, int price, Company company, int quantity){
-    // : code(code), price(price), quantity(quantity), company(company) {}
+// constructor parameter
+Stock::Stock(string code, long int price, Company company, int quantity){
     this->code = code;
     this->price = price;
     this->quantity = quantity;
@@ -53,7 +51,7 @@ string Stock::getCode() {
     return code;
 }
 
-int Stock::getPrice() {
+long int Stock::getPrice() {
     return price;
 }
 
@@ -66,7 +64,7 @@ int Stock::getQuantity() {
 }
 
 // setter methods
-void Stock::setPrice(int price) {
+void Stock::setPrice(long int price) {
     this->price = price;
 }
 
@@ -87,22 +85,23 @@ void Stock::printInfo() {
 }
 
 void Stock::rightIssue(int nStock) {
+    // tambah stock dengan harga yang sama sebanyak nstock
     quantity += nStock;
 }
 
 void Stock::splitStock(int multiplier) {
-
+    // pecah stock menjadi nstock dengan rasio 1:multiplier dan harga stock menjadi price/multiplier
     int newQuantity = quantity * multiplier;
-    int newPrice = price / multiplier;
+    long int newPrice = price / multiplier;
     quantity = newQuantity;
     price = newPrice;
 
 }
 
 void Stock::reverseSplitStock(int divisor) {
-
+    // Gabungkan divisor stock menjadi 1 stock dengan harga price*divisor 
     int newQuantity = quantity / divisor;
-    int newPrice = price * divisor;
+    long int newPrice = price * divisor;
     quantity = newQuantity;
     price = newPrice;
 
