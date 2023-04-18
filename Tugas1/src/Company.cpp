@@ -1,4 +1,4 @@
-#include "Company.hpp"
+#include "../header/Company.hpp"
 
 // constructor default
 Company::Company() {

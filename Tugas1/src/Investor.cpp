@@ -1,4 +1,4 @@
-#include "Investor.hpp"
+#include "../header/Investor.hpp"
 #include <iostream>
 
 int Investor::nInvestor = 0;

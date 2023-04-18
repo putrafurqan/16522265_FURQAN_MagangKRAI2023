@@ -1,4 +1,4 @@
-#include "Stock.hpp"
+#include "../header/Stock.hpp"
 
 // default constructor
 Stock::Stock(){
