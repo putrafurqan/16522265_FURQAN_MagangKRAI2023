@@ -1,13 +1,17 @@
 PENJELASAN KODE
 
 folder src terdiri dari tiga file, yaitu :
+
     - Investor.cpp : implementasi dari Investor.hpp
+
     - Company.cpp : implementasi dari Company.hpp
+    
     - Stock.cpp : implementasi dari Stock.hpp
 
 Pada tiap file implementasi terdapat fungsi dasar seperti constructor, destructor, getter, dan setter.
 
 Implementasi Investor.hpp pada Investor.cpp : 
+
     - Terdapat default constructor yang memiliki nilai default untuk pemanggilan Investor()
     
     - Terdapat constructor dengan id yang merupakan incremental dari jumlah investor dan terdapat array of stocks dengan maksimal panjang array adalah 10.
@@ -35,12 +39,14 @@ Implementasi Investor.hpp pada Investor.cpp :
             pada printInfo terdapat perbedaan pada stock. Lakukan for loop tersendiri untuk print semua stocks yang dimilki
         
 Implementasi Company.hpp pada Company.cpp : 
+
     - Terdapat default constructor yang memiliki nilai default untuk pemanggilan Company()
 
     - Penjelasan additional methods : 
         - Hanya memiliki additional berupa print info
 
 Implementasi Stock.hpp pada Stock.cpp : 
+
     - Terdapat default constructor yang memiliki nilai default untuk pemanggilan Stock()
     
     - Terdapat perubahan pada tipe data price. Tidak diberikan spesifikasi pasti berapa maksimal dari nilai price. Oleh karena itu dilakukan perubahan tipe data
